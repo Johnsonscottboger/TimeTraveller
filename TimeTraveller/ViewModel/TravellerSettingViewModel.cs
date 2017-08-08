@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace TimeTraveller.ViewModel
         private TravellerSetting _travellerSetting;
         private string _configFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", $"{nameof(TravellerSetting)}.json");
         private static Timer _timer;
+        private static bool _isRuning;
 
         //记录修改之后的当前时间
         private DateTime _currentDateTime = DateTime.Now;
@@ -41,10 +43,7 @@ namespace TimeTraveller.ViewModel
             this._travellerSetting = new TravellerSetting()
             {
                 TravellMillseconds = 1,
-                TravellSecond = 1,
-                TravellMinute = 1,
-                TravellHour = 1,
-                TravellDay = 1
+                TravellSecond = 1
             };
 
             var getTask = GetTravellerSettingAsync();
@@ -87,9 +86,9 @@ namespace TimeTraveller.ViewModel
         /// 更新设置执行方法
         /// </summary>
         /// <returns></returns>
-        private Task UpdateTravellerSettingAsync()
+        private void UpdateTravellerSetting()
         {
-            return Task.Factory.StartNew(() =>
+            Task.Factory.StartNew(() =>
             {
                 this.TravellerSetting = this.TravellerSetting;
                 var content = JsonConvert.SerializeObject(this.TravellerSetting);
@@ -136,22 +135,43 @@ namespace TimeTraveller.ViewModel
         /// </summary>
         public ICommand UpdateTravellerSettingCommand
         {
-            get { return new RelayCommand(UpdateTravellerSettingAsync, CanUpdateTravellerSetting); }
+            get { return new RelayCommand(UpdateTravellerSetting, CanUpdateTravellerSetting); }
         }
         #endregion
 
         #region 修改系统时间命令
+        /// <summary>
+        /// 更新系统时间执行方法
+        /// </summary>
         private void UpdateSystemDateTime()
         {
             var callback = new TimerCallback(obj =>
             {
-                var targetDateTime = _currentDateTime.AddMilliseconds(1);
-                var time = new SYSTEMTIME(targetDateTime);
-                var success = LocalTime.SetLocalTime(ref time);
+                _currentDateTime = _currentDateTime.AddMilliseconds(this.TravellerSetting.TravellMillseconds);
+                var time = new SYSTEMTIME(_currentDateTime);
+                Debug.WriteLine($"{_currentDateTime.ToString("yyyy-MM-dd HH:mm:ss tttt")}");
+                //var success = LocalTime.SetLocalTime(ref time);
             });
-            
-            _timer = new Timer(callback,null,0,this.TravellerSetting.TravellMillseconds);
+
+            _isRuning = true;
+            _timer = new Timer(callback, null, 0, 1);
+        }
+
+        /// <summary>
+        /// 是否可执行更新系统时间方法
+        /// </summary>
+        /// <returns></returns>
+        private bool CanUpdateSystemDateTime()
+        {
+            return !_isRuning;
+        }
+
+        public ICommand UpdateSystemDateTimeCommand
+        {
+            get { return new RelayCommand(UpdateSystemDateTime, CanUpdateSystemDateTime); }
         }
         #endregion
+
+
     }
 }

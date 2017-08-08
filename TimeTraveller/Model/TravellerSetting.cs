@@ -34,41 +34,5 @@ namespace TimeTraveller.Model
                 this.TravellMillseconds = value * 1000;
             }
         }
-
-        public Int64 TravellMinute
-        {
-            get
-            {
-                return this.TravellSecond / 60;
-            }
-            set
-            {
-                this.TravellSecond = value * 60;
-            }
-        }
-
-        public Int64 TravellHour
-        {
-            get
-            {
-                return this.TravellMinute / 60;
-            }
-            set
-            {
-                this.TravellMinute = value * 60;
-            }
-        }
-
-        public Int64 TravellDay
-        {
-            get
-            {
-                return this.TravellHour / 24;
-            }
-            set
-            {
-                this.TravellHour = value * 24;
-            }
-        }
     }
 }

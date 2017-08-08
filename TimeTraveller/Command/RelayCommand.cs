@@ -10,8 +10,7 @@ namespace TimeTraveller.Command
     public class RelayCommand : ICommand
     {
         private readonly Func<bool> _canExecute;
-        private readonly Func<Task> _execute;
-
+        private readonly Action _execute;
 
         public event EventHandler CanExecuteChanged
         {
@@ -26,8 +25,8 @@ namespace TimeTraveller.Command
                     CommandManager.RequerySuggested -= value;
             }
         }
-
-        public RelayCommand(Func<Task> execute, Func<bool> canExecute)
+        
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
             if (execute == null)
                 throw new ArgumentNullException(nameof(execute));
@@ -42,7 +41,11 @@ namespace TimeTraveller.Command
 
         public void Execute(object parameter)
         {
-            this._execute();
+            if(this._execute != null)
+            {
+                this._execute();
+                return;
+            }
         }
     }
 }
