@@ -35,25 +35,24 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="1秒" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
-        <TextBlock Grid.Column="2" Grid.Row="1" Text="=" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
-        <StackPanel Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <TextBox Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18">
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="1秒" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+        <TextBlock Grid.Column="2" Grid.Row="0" Text="=" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
+        <StackPanel Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="20,0,0,0">
+            <TextBox Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18">
                 <Binding Mode="TwoWay" Path="TravellerSetting.TravellSecond" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <valide:RangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>
-            <TextBlock Grid.Column="3" Grid.Row="1" Text="秒" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+            <TextBlock Grid.Column="3" Grid.Row="0" Text="秒" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="5" Content="保存" ToolTip="保存当前设置" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        <Button Grid.Column="1" Grid.Row="1" Content="保存" ToolTip="保存当前设置" Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 Command="{Binding UpdateTravellerSettingCommand}"/>
-        <Button Grid.Column="2" Grid.Row="5" Content="开始" ToolTip="开始时间之旅"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        <Button Grid.Column="2" Grid.Row="1" Content="开始" ToolTip="开始时间之旅"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 Command="{Binding UpdateSystemDateTimeCommand}"/>
-        <Button Grid.Column="3" Grid.Row="5" Content="重置" ToolTip="重置系统时间为Internet时间"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        <Button Grid.Column="3" Grid.Row="1" Content="重置" ToolTip="重置系统时间为Internet时间"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 Command="{Binding RestoreSystemDateTimeCommand}"/>
     </Grid>
 </UserControl>

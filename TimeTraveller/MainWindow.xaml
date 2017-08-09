@@ -15,8 +15,14 @@
         xmlns:view="clr-namespace:TimeTraveller.View"
         xmlns:vm="clr-namespace:TimeTraveller.ViewModel"
         mc:Ignorable="d"
-        Title="TimeTraveller" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+        Title="TimeTraveller" Height="350" Width="525" WindowStartupLocation="CenterScreen"
+        MinHeight="350" MinWidth="525" MaxHeight="350" MaxWidth="525" Icon="Time_Machine_72px_1186268_easyicon.net.ico">
     <Grid>
-        <view:TravellerSettingView />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <view:Watch Grid.Row="0"/>
+        <view:TravellerSettingView Grid.Row="1"/>
     </Grid>
 </Window>
