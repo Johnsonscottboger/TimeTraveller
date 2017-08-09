@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,6 +24,11 @@ namespace TimeTraveller.View
         public TravellerSettingView()
         {
             InitializeComponent();
+        }
+
+        private void GitHubButton_OnClick(Object sender,RoutedEventArgs e)
+        {
+            Process.Start(ConfigurationManager.AppSettings["GitHub"]);
         }
     }
 }

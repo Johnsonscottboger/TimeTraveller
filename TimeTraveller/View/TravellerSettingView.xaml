@@ -54,5 +54,11 @@
                 Command="{Binding UpdateSystemDateTimeCommand}"/>
         <Button Grid.Column="3" Grid.Row="1" Content="重置" ToolTip="重置系统时间为Internet时间"  Style="{DynamicResource MaterialDesignRaisedButton}" Margin="16 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 Command="{Binding RestoreSystemDateTimeCommand}"/>
+        <Button Grid.Column="4" Grid.Row="1" Style="{DynamicResource MaterialDesignFlatButton}"
+                                            x:Name="GitHubButton" Click="GitHubButton_OnClick">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="GithubCircle" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
