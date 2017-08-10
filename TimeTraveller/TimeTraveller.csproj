@@ -153,6 +153,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -172,8 +173,11 @@
   <ItemGroup>
     <Resource Include="Time_Machine_72px_1186268_easyicon.net.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Screenshot\" />
+    <Resource Include="Screenshot\TIM截图20170810110704.png" />
+    <Resource Include="Screenshot\TIM截图20170810110735.png" />
+    <Resource Include="Screenshot\TIM截图20170810110748.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
