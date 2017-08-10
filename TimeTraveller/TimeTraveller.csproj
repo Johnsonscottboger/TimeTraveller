@@ -175,9 +175,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Screenshot\TIM截图20170810110704.png" />
-    <Resource Include="Screenshot\TIM截图20170810110735.png" />
-    <Resource Include="Screenshot\TIM截图20170810110748.png" />
+    <Resource Include="Screenshot\TIM20170810110704.png" />
+    <Resource Include="Screenshot\TIM20170810110735.png" />
+    <Resource Include="Screenshot\TIM20170810110748.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
