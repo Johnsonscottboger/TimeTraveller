@@ -95,6 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Common\Extend.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\HalfConverter.cs" />
     <Compile Include="Converters\HandAngleConverter.cs" />

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using TimeTraveller.Command;
+using TimeTraveller.Common;
 using TimeTraveller.Model;
 using TimeTraveller.Win32Api;
 
@@ -26,6 +27,8 @@ namespace TimeTraveller.ViewModel
 
         //记录修改之后的当前时间
         private DateTime _currentDateTime = DateTime.Now;
+        
+        private SYSTEMTIME _time;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -47,6 +50,8 @@ namespace TimeTraveller.ViewModel
                 TravellMillseconds = 1,
                 TravellSecond = 1
             };
+
+            
 
             var getTask = GetTravellerSettingAsync();
             getTask.ContinueWith(p =>
@@ -146,16 +151,30 @@ namespace TimeTraveller.ViewModel
         /// </summary>
         private void UpdateSystemDateTime()
         {
+            var times = this.TravellerSetting.TravellMillseconds;
+
+            this._currentDateTime = DateTime.Now;
+            var r = this._currentDateTime.Second % 10;
+            if (r != 0)
+            {
+                this._currentDateTime = this._currentDateTime.AddSeconds(10 - r);
+            }
+
             var callback = new TimerCallback(obj =>
             {
-                _currentDateTime = _currentDateTime.AddMilliseconds(this.TravellerSetting.TravellMillseconds);
-                var time = new SYSTEMTIME(_currentDateTime);
+                _currentDateTime = _currentDateTime.AddMilliseconds(times);
+                _time = new SYSTEMTIME(_currentDateTime);
+                var success = LocalTime.SetLocalTime(ref _time);
+                if (!success)
+                {
+                    throw new Exception("由于未知原因,修改系统时间失败!");
+                }
+                Debug.WriteLine($"修改成功:{success}");
                 Debug.WriteLine($"修改之后的时间: {_currentDateTime.ToString("yyyy-MM-dd HH:mm:ss tttt")}");
-                var success = LocalTime.SetLocalTime(ref time);
             });
-            
-            _isRuning = true;
+
             _timer = new Timer(callback, null, 0, 1000);
+            _isRuning = true;
         }
 
         /// <summary>
