@@ -16,8 +16,8 @@
 
 ## Screenshots
 
-![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110704.png)
+![TimeTraveller](https://github.com/waning1995/RedMan/blob/master/src/RedMan/wwwroot/avatar/1482061237.png)
 
-![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110735.png)
+![TimeTraveller](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110735.png)
 
-![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110748.png)
+![TimeTraveller](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110748.png)
