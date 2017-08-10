@@ -150,7 +150,7 @@ namespace TimeTraveller.ViewModel
             {
                 _currentDateTime = _currentDateTime.AddMilliseconds(this.TravellerSetting.TravellMillseconds);
                 var time = new SYSTEMTIME(_currentDateTime);
-                Debug.WriteLine($"{_currentDateTime.ToString("yyyy-MM-dd HH:mm:ss tttt")}");
+                Debug.WriteLine($"修改之后的时间: {_currentDateTime.ToString("yyyy-MM-dd HH:mm:ss tttt")}");
                 var success = LocalTime.SetLocalTime(ref time);
             });
 
@@ -182,10 +182,14 @@ namespace TimeTraveller.ViewModel
         /// </summary>
         private void RestoreSystemDateTime()
         {
-            _timer.Change(Timeout.Infinite, Timeout.Infinite);
-            var now = GetInternetDateTime();
-            var systime = new SYSTEMTIME(now);
-            LocalTime.SetLocalTime(ref systime);
+            if (_timer != null)
+            {
+                _timer.Change(Timeout.Infinite, Timeout.Infinite);
+                var now = GetInternetDateTime();
+                var systime = new SYSTEMTIME(now);
+                LocalTime.SetLocalTime(ref systime);
+            }
+            _isRuning = false;
         }
 
         /// <summary>
@@ -245,11 +249,11 @@ namespace TimeTraveller.ViewModel
             {
                 hour = now.Hour;
             }
-            if(!int.TryParse(minuteMatch.Value,out minute))
+            if (!int.TryParse(minuteMatch.Value, out minute))
             {
                 minute = now.Minute;
             }
-            if(!int.TryParse(secondMatch.Value,out second))
+            if (!int.TryParse(secondMatch.Value, out second))
             {
                 second = now.Second;
             }
@@ -265,6 +269,14 @@ namespace TimeTraveller.ViewModel
         public ICommand RestoreSystemDateTimeCommand
         {
             get { return new RelayCommand(RestoreSystemDateTime, CanRestoreSystemDateTime); }
+        }
+
+        /// <summary>
+        /// 强制还原系统时间命令
+        /// </summary>
+        public ICommand RestoreSystemDateTimeForceCommand
+        {
+            get { return new RelayCommand(RestoreSystemDateTime, () => true); }
         }
         #endregion
     }

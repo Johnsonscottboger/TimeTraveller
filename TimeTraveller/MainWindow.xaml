@@ -14,9 +14,18 @@
         xmlns:local="clr-namespace:TimeTraveller"
         xmlns:view="clr-namespace:TimeTraveller.View"
         xmlns:vm="clr-namespace:TimeTraveller.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="TimeTraveller" Height="350" Width="525" WindowStartupLocation="CenterScreen"
         MinHeight="350" MinWidth="525" MaxHeight="350" MaxWidth="525" Icon="Time_Machine_72px_1186268_easyicon.net.ico">
+    <Window.DataContext>
+        <vm:TravellerSettingViewModel/>
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding RestoreSystemDateTimeForceCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>

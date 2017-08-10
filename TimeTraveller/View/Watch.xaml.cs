@@ -51,7 +51,7 @@ namespace TimeTraveller.View
         void MainTimer_Tick(object sender,EventArgs e)
         {
             this.CurrentTime = DateTime.Now;
-            Debug.WriteLine(this.CurrentTime);
+            Debug.WriteLine($"当前时间: {this.CurrentTime}");
         }
     }
 }
