@@ -16,8 +16,8 @@
 
 ## Screenshots
 
-![](./Screenshot/TIM截图20170810110704.png)
+![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110704.png)
 
-![](./Screenshot/TIM截图20170810110735.png)
+![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110735.png)
 
-![](./Screenshot/TIM截图20170810110748.png)
+![](https://github.com/waning1995/TimeTraveller/tree/master/TimeTraveller/Screenshot/TIM截图20170810110748.png)
