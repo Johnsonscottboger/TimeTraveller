@@ -16,8 +16,8 @@
 
 ## Screenshots
 
-![](./Screenshot/TIM截图20170810110704.png)
+![](./Screenshot/TIM20170810110704.png)
 
-![](./Screenshot/TIM截图20170810110735.png)
+![](./Screenshot/TIM20170810110735.png)
 
-![](./Screenshot/TIM截图20170810110748.png)
+![](./Screenshot/TIM20170810110748.png)
