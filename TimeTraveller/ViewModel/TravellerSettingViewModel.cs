@@ -153,7 +153,7 @@ namespace TimeTraveller.ViewModel
                 Debug.WriteLine($"修改之后的时间: {_currentDateTime.ToString("yyyy-MM-dd HH:mm:ss tttt")}");
                 var success = LocalTime.SetLocalTime(ref time);
             });
-
+            
             _isRuning = true;
             _timer = new Timer(callback, null, 0, 1000);
         }

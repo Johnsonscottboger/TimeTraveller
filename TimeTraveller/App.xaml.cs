@@ -24,18 +24,27 @@ namespace TimeTraveller
             Log.Info("========================程序启动========================");
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            App.Current.Exit += Current_Exit;
+        }
+
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            Log.Info($"========================程序退出 ExitCode:{e.ApplicationExitCode}========================");
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Log.Error(e.ExceptionObject);
             MessageBox.Show(e.ExceptionObject.ToString(), "异常", MessageBoxButton.OK, MessageBoxImage.Error);
+            Current.Shutdown();
         }
 
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             Log.Error(e.Exception);
+            e.Handled = true;
             MessageBox.Show(e.Exception.Message, "异常", MessageBoxButton.OK, MessageBoxImage.Error);
+            Current.Shutdown();
         }
     }
 }
